@@ -10,6 +10,7 @@ import MyProfile from './pages/MyProfile'
 import Login from './pages/Login'
 import Appointment from './pages/Appointment'
 import Navbar from './Components/Navbar'
+import Footer from './Components/Footer'
 
 
 
@@ -28,7 +29,7 @@ function App() {
         <Route path='/my-profile' element={<MyProfile />} />
         <Route path='/login' element={<Login />} />
       </Routes>
-
+      <Footer />
 
     </div>
   )
