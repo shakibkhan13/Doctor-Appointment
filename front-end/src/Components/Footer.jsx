@@ -4,9 +4,7 @@ import { assets } from '../assets/assets_frontend/assets';
 const Footer = () => {
   return (
     <footer className=" px-6 sm:px-10 lg:px-14 py-10 md:py-16">
-      {/* Top Section */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-14 mb-10">
-        {/* Logo and Description */}
         <div className="flex flex-col">
           <img src={assets.logo} alt="Med-Connect Logo" className="w-32 mb-4" />
           <p className="text-sm leading-relaxed line-clamp-3">
@@ -14,7 +12,6 @@ const Footer = () => {
           </p>
         </div>
 
-        {/* Company Links */}
         <div className="flex flex-col">
           <h3 className="text-lg font-semibold mb-4">Company</h3>
           <ul className="space-y-2">
@@ -25,7 +22,6 @@ const Footer = () => {
           </ul>
         </div>
 
-        {/* Contact Information */}
         <div className="flex flex-col">
           <h3 className="text-lg font-semibold mb-4">Get in Touch</h3>
           <ul className="space-y-2">
@@ -35,8 +31,7 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* Bottom Section */}
-      <hr className="border-gray-600 mb-6" />
+      <hr className="border-gray-600 mb-8 mt-8" />
       <p className="text-center text-sm">
         © 2024 Med-Connect - All Rights Reserved
       </p>
