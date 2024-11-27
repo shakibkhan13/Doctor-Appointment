@@ -6,14 +6,18 @@ export default {
   ],
   theme: {
     extend: {
-      colors:{
-        'primary':"#5f6FFF"
+      colors: {
+        'primary': "#5f6FFF", // Custom primary color
       },
-      gridTemplateColumns:{
-        'auto':'repeat(auto-fill, minmax(200px, 1fr))'
-      }
+      gridTemplateColumns: {
+        'auto': 'repeat(auto-fill, minmax(200px, 1fr))', // Custom grid configuration
+      },
     },
   },
-  plugins: [],
-}
-
+  plugins: [
+    // require('tailwind-scrollbar'), // Add scrollbar plugin for custom styles
+  ],
+  variants: {
+    scrollbar: ['rounded'], // Enables rounded scrollbar variants
+  },
+};
