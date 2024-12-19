@@ -1,7 +1,7 @@
-//API for adding doctor
+
 
 const addDoctor = async (req, res) => {
-  console.log("image here");
+  // console.log("image here");
   try {
     const {
       name,
@@ -15,8 +15,11 @@ const addDoctor = async (req, res) => {
       address,
     } = req.body;
 
-    const imageFile = req.file ? req.file.path : undefined;
-    console.log("image file ", imageFile);
+    const imageFile = req.file 
+
+
+    // const imageFile = req.file ? req.file.path : undefined;
+    // console.log("image file ", imageFile);
 
     console.log(
       {
