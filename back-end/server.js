@@ -1,33 +1,26 @@
 import express from "express";
 import cors from "cors";
-import "dotenv/config";
-import connectDB from "./config/mongodb.js";
-// import connectCloudinary from './config/cloudinary.js';
-import adminRouter from "./routes/adminRoutes.js";
+import dotenv from "dotenv";
+import connectDB from "./config/mongodb.js"; 
+import connectCloudinary from './config/cloudinary.js';
+import adminRouter from "./routes/adminRoutes.js"; 
 
-//app config
+dotenv.config(); 
+
 const app = express();
-const port = process.env.PORT || 4000;
+const port = process.env.PORT || 5000;
+
+
 connectDB();
-// connectCloudinary()
+connectCloudinary();
 
-//middlewares
-app.use(express.json());
-app.use(cors());
+app.use(express.json()); 
+app.use(cors()); 
 
-//api end points
-app.use("/api/admin", adminRouter);
+app.use("/api/admin", adminRouter); 
 
 app.get("/", (req, res) => {
   res.send("API Working");
 });
 
-// Global Error Handler
-app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res
-    .status(500)
-    .json({ message: "Something went wrong!", error: err.message });
-});
-
-app.listen(port, () => console.log("Server Started", port));
+app.listen(port, () => console.log(`Server Started on port ${port}`));
