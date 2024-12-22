@@ -60,7 +60,7 @@ const addDoctor = async (req, res) => {
       experience,
       about,
       fees,
-      address,  
+      address:JSON.parse(address),  
       date: Date.now(),
     };
 
@@ -95,5 +95,15 @@ const loginAdmin = async (req, res)=>{
   }
 }
 
+const allDoctor = async (req, res)=>{
+  try {
+    const doctors = await doctorsModel.find({}).select('-password')
+    res.json({success:true, doctors})
+  } catch (error) {
+    console.log(error)
+    res.json({success:false, message:error.message})
+  }
+}
 
-export { addDoctor, loginAdmin };
+
+export { addDoctor, loginAdmin, allDoctor };
