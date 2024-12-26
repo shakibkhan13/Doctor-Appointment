@@ -5,6 +5,9 @@ import jwt from 'jsonwebtoken'
 import { v2 as cloudinary } from 'cloudinary'
 import Doctor from '../models/doctorsModel.js';
 import appointmentModel from '../models/appointmentModel.js';
+import razorpay from 'razorpay'
+
+
 
 
 const registerUser = async (req, res) => {
@@ -173,7 +176,7 @@ const updateProfile = async (req, res) => {
 
 //         res.json({success: true, message: ' Appointment Booked '})
 
-        
+
 //     } catch (error) {
 //         console.log(error)
 //         res.json({success : false , error:error.message})
@@ -231,6 +234,55 @@ const bookAppointment = async (req, res) => {
 };
 
 
+const listAppointment = async (req, res) => {
+
+    try {
+        const { userId } = req.body;
+        const appointments = await appointmentModel.find({ userId })
+        res.json({ success: true, appointments })
+    } catch (error) {
+        console.log(error);
+        res.json({ success: false, message: error.message });
+    }
+}
+
+const cancelAppointment = async(req, res) => {
+    try {
+
+        const {userId , appointmentId} = req.body
+        const appointmentData = await appointmentModel.findById(appointmentId)
+
+        if (appointmentData.userId !== userId ) {
+            return res.json({success:false , message: 'Unauthorized action' })
+        }
+
+        await appointmentModel.findByIdAndUpdate(appointmentId,{cancelled: true})
+
+        const {docId , slotDate , slotTime} = appointmentData 
+        const doctorData = await Doctor.findById(docId)
+
+        let slots_booked = doctorData.slots_booked
+
+        slots_booked[slotDate] = slots_booked[slotDate].filter(e => e !== slotTime)
+
+        await Doctor.findByIdAndUpdate(docId , {slots_booked})
+
+        res.json({success:true  , message: 'Appointment Cancelled '})
+
+    }catch(error){
+        console.log(error)
+        res.json({success:false , message : error.message})
+    }
+}
+
+// const razorpayInstance = new razorpay({
+//     key_id:'' , 
+//     key_secret: ' '
+// })
+
+// const paymentRazorpay = async (req,res ) =>{
+
+// }
 
 
-export { registerUser, getProfile, loginUser, updateProfile , bookAppointment }
+export { registerUser, getProfile, loginUser, updateProfile, bookAppointment, listAppointment , cancelAppointment }
