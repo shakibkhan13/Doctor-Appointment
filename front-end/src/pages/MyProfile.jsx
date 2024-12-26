@@ -71,7 +71,7 @@ const MyProfile = () => {
           : <img
             src={userData.image}
             alt="Profile"
-            className="w-40 h-48 rounded-full mx-auto"
+            className="w-48 h-48 rounded-full mx-auto"
           />
       }
       {/* <img
