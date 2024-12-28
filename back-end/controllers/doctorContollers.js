@@ -19,6 +19,7 @@ const doctorList = async (req, res)=>{
     try {
         
         const doctors = await Doctor.find({}).select(['-password','-email'])
+        // console.log(doctors)
 
         res.json({success:true, doctors})
 
