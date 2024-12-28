@@ -5,7 +5,7 @@ import { assets } from '../../assets/assets_admin/assets'
 
 const AllAppointmens = () => {
 
-  const { aToken, appointments, getAllAppointments } = useContext(AdminContext)
+  const { aToken, appointments, getAllAppointments, cancelAppointment } = useContext(AdminContext)
   const {calculateAge , slotDateFormat, currency} = useContext(AppContext)
 
 
@@ -35,9 +35,7 @@ const AllAppointmens = () => {
             
             <div className='flex flex-wrap justify-between max-sm:gap-2 sm:grid grid-cols-[0.5fr_3fr_1fr_3fr_3fr_1fr_1fr] items-center text-green-500 py-3 px-6 border-b hover:bg-gray-50' key={index}>
 
-              {
-                console.log("docData:", item.docData)
-              }
+
 
               <p className='max-sm:hidden'>{index + 1}</p>
               <div className='flex items-center gap-2'>
@@ -54,7 +52,7 @@ const AllAppointmens = () => {
               {
                 item.cancelled 
                 ? <p className='text-red-400 text-xs font-medium'>Cancelled</p>
-                : <img className='w-10 cursor-pointer' src={assets.cancel_icon} alt="" />
+                : <img onClick={()=>cancelAppointment(item._id)} className='w-10 cursor-pointer' src={assets.cancel_icon} alt="" />
               }
             </div>
           ))
