@@ -57,7 +57,7 @@ const Dashbord = () => {
             dashData.latestAppointments.map((item, index) => {
               
               <div key={index}>
-                <img src={item.docData.image} alt="" />
+                <img src={item.docData.image} alt="img" />
                 <div>
                   <p>{item.docData.name}</p>
                   <p>{item.slotDate}</p>

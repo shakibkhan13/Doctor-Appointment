@@ -84,7 +84,7 @@ const AdminContextProvider = (props) => {
 
             if(data.success){
                 setDashData(data.dashData)
-                // console.log(data.dashData)
+                console.log( data.dashData.latestAppointments.docData)
             }else{
                 toast.error(data.message)
             }
