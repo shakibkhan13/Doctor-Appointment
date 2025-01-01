@@ -15,12 +15,9 @@ const AppContextProvider = (props) => {
 
         let age = today.getFullYear() - birthDate.getFullYear()
         return age 
-
-
-
     }
 
-    const months = [" ", "jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+    const months = [" ", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
 
     const slotDateFormat = (slotData) => {
       const dataArray = slotData.split('-')

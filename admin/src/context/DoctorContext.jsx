@@ -16,7 +16,7 @@ const DoctorContextProvider = (props) => {
     const getAppointments = async ()=>{
         try {
             
-            const { data } = await axios.get(backendUrl + '/api/doctor/profile', {headers:{dToken}})
+            const { data } = await axios.get(backendUrl + '/api/doctor/appointments', {headers:{dToken}})
             if (data.success) {
                 setAppointments(data.appointments.reverse())
                 console.log(data.appointments.reverse())
