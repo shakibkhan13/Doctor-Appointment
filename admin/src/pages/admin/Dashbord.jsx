@@ -44,7 +44,9 @@ const Dashbord = () => {
         </div>
 
       </div>
-      <div className='bg-white '>
+
+      
+      {/* <div className='bg-white '>
 
         <div className='flex items-center gap-2.5 px-4 py-4 mt-10 rounded-t border'>
           <img src={assets.list_icon} alt="" />
@@ -57,7 +59,7 @@ const Dashbord = () => {
             dashData.latestAppointments.map((item, index) => {
               
               <div key={index}>
-                <img src={item.docData.image} alt="" />
+                <img src={item.docData.image} alt="img" />
                 <div>
                   <p>{item.docData.name}</p>
                   <p>{item.slotDate}</p>
@@ -74,7 +76,7 @@ const Dashbord = () => {
 
         </div>
 
-      </div>
+      </div> */}
 
     </div>
   )
