@@ -2,7 +2,7 @@ import Doctor from "../models/doctorsModel.js"
 import bcrypt from "bcrypt"
 import jwt from "jsonwebtoken"
 import appointmentModel from "../models/appointmentModel.js"
-import Doctor from "../models/doctorsModel.js"
+// import Doctor from "../models/doctorsModel.js"
 
 
 const changeAvailablity = async (req, res) => {
