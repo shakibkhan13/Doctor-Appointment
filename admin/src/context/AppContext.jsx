@@ -8,14 +8,48 @@ const AppContextProvider = (props) => {
 
     const currency = 'BDT'
 
-    const calculateAge = (dob)=>{
-        
-        const today = new Date()
-        const birthDate = new Date(dob)
-
-        let age = today.getFullYear() - birthDate.getFullYear()
-        return age 
-    }
+    const calculateAge = (dob) => {
+        //console.log("Input DOB:", dob);
+    
+        const dateParts = dob.split("-");
+        let formattedDob;
+    
+        if (dateParts.length === 3) {
+            formattedDob = `${dateParts[2]}-${dateParts[1]}-${dateParts[0]}`;
+        } else {
+            formattedDob = dob; 
+        }
+    
+        const birthDate = new Date(formattedDob);
+    
+        if (isNaN(birthDate)) {
+            console.error("Invalid date format. Please provide a valid date (e.g., YYYY-MM-DD or DD-MM-YYYY).");
+            return null; 
+        }
+    
+        //console.log("Parsed Birth Date:", birthDate);
+    
+        const today = new Date();
+        let age = today.getFullYear() - birthDate.getFullYear();
+    
+        const monthDiff = today.getMonth() - birthDate.getMonth();
+        const dayDiff = today.getDate() - birthDate.getDate();
+    
+        if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) {
+            age--; 
+        }
+    
+        //console.log("Calculated Age:", age);
+        return age;
+    };
+    
+    // calculateAge("1995-12-30"); 
+    // calculateAge("21-11-2003");
+    
+    
+    // // Example usage:
+    // calculateAge("1995-12-30"); 
+    
 
     const months = [" ", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
 
