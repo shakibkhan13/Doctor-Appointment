@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import  { useContext, useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { AppContext } from '../context/AppContext';
 
@@ -71,10 +71,10 @@ const Doctors = () => {
               className="border border-blue-300 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden cursor-pointer"
               onClick={() => navigate(`/appointment/${item._id}`)}
             >
-              {/* Image Container */}
+
               <div className="w-full h-40 sm:h-48 bg-blue-50 overflow-hidden flex justify-center items-center">
                 <img
-                  src={item.image} // Ensure image exists in your doctors data
+                  src={item.image} 
                   alt={item.name}
                   className="w-full h-full object-contain"
                 />
