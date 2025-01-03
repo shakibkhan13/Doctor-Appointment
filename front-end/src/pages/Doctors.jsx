@@ -37,8 +37,8 @@ const Doctors = () => {
         </p>
       </div>
 
-      <button className={`py-1 px-3 border bg-gray-300 mb-3 rounded text-sm transition-all sm:hidden ${showFilter ? 'bg-primary text-white': ''}`} onClick={()=>setShowFilter(prev => !prev)}>Filters</button>
-      <div className={`grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4 sm:gap-6 mb-10 mt-3 ${showFilter ? 'flex':'hidden sm:flex'}`}>
+      <button className={`py-1 px-3 border bg-gray-300 mb-3 rounded text-sm transition-all sm:hidden ${showFilter ? 'bg-primary text-white' : ''}`} onClick={() => setShowFilter(prev => !prev)}>Filters</button>
+      <div className={`grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4 sm:gap-6 mb-10 mt-3 ${showFilter ? 'flex' : 'hidden sm:flex'}`}>
         {[
           'General Physician',
           'Gynecologist',
@@ -49,11 +49,10 @@ const Doctors = () => {
         ].map((specialty, index) => (
           <p
             key={index}
-            className={`cursor-pointer text-center text-sm sm:text-base text-white py-2 px-4 rounded-lg ${
-              speciality === specialty.toLowerCase()
+            className={`cursor-pointer text-center text-sm sm:text-base text-white py-2 px-4 rounded-lg ${speciality === specialty.toLowerCase()
                 ? 'bg-blue-600'
                 : 'bg-gray-300 hover:bg-blue-500 hover:text-white'
-            }`}
+              }`}
             onClick={() => {
               navigate(`/doctors/${specialty.toLowerCase()}`);
             }}
@@ -82,9 +81,9 @@ const Doctors = () => {
               </div>
               {/* Doctor Details */}
               <div className="p-4">
-                <div className="flex items-center gap-2 mb-2 text-green-500 text-sm">
-                  <span className="w-2 h-2 bg-green-500 rounded-full"></span>
-                  <p>Available</p>
+                <div className={`flex items-center gap-2 text-sm text-center ${item.available ? 'text-green-500' : 'text-gray-500'} `}>
+                  <p className={`w-2 h-2 ${item.available ? 'bg-green-500' : 'bg-gray-500'} bg-green-500 rounded-full`}></p>
+                  <p>{item.available ? 'Available' : 'Not Available'}</p>
                 </div>
                 <h2 className="text-gray-900 text-lg font-semibold">
                   {item.name}
